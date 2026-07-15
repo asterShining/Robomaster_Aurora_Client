@@ -258,7 +258,14 @@ flowchart LR
 
 ## 🙏 鸣谢
 
+**开源项目**
+
 [Wails](https://wails.io)、[FFmpeg](https://ffmpeg.org)、[Eclipse Paho](https://github.com/eclipse/paho.mqtt.golang) 等优秀开源项目。
+
+**个人**
+
+- **张天乐** —— 英雄电控
+- **聂政华 (Neomelt)** —— 哨兵导航，项目初期技术选型与全程思路点拨
 
 ## 📄 License
 
