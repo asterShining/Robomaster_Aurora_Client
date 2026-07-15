@@ -230,24 +230,7 @@ import {
 const panelRef = ref<HTMLElement | null>(null);
 const showCredits = ref(false);
 
-interface CreditPerson {
-  name: string;
-  role?: string;
-  note?: string;
-}
-
-const creditsList: CreditPerson[] = [
-  {
-    name: "张天乐",
-    role: "牢牢牢英雄电控",
-    note: "经常带火腿肠来实验室，基本都进了我的肚子",
-  },
-  {
-    name: "聂政华 (Neomelt)",
-    role: "牢哨兵导航",
-    note: "项目初期技术选型和全程思路点拨，帮助巨大",
-  },
-];
+const creditsList: { name: string; role?: string; note?: string }[] = [];
 
 const uiPanelStore = useUiPanelStore();
 const robotStore = useRobotDataStore();

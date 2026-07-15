@@ -1,3 +1,7 @@
 build/bin
 frontend/dist
 frontend/node_modules
+.omc/
+.tools/
+frontend/test-results/
+frontend/playwright-report/
