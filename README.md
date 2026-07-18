@@ -32,6 +32,7 @@
 - [📂 文件结构](#-文件结构)
 - [🧠 技术细节](#-技术细节)
 - [👨‍💻 作者](#-作者)
+- [🔗 相关项目](#-相关项目)
 - [🙏 鸣谢](#-鸣谢)
 - [📝 后记](#-后记)
 
@@ -262,6 +263,11 @@ flowchart LR
 ## 👨‍💻 作者
 
 - [**Aster**](https://github.com/asterShining) —— 设计与开发
+
+## 🔗 相关项目
+
+- [custom_image_bridge_arch](https://github.com/asterShining/custom_image_bridge_arch) —— 下位机，图传桥接固件与架构文档
+- [Pacific_doorlock_sniper](https://github.com/asterShining/Pacific_doorlock_sniper) —— 上位机，相机采集与 H.264 编码传输
 
 ## 🙏 鸣谢
 
