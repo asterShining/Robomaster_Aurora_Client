@@ -269,9 +269,13 @@ flowchart LR
 
 ## 🙏 鸣谢
 
-**开源项目**
+**开源社区**
 
-[Wails](https://wails.io)、[FFmpeg](https://ffmpeg.org)、[Eclipse Paho](https://github.com/eclipse/paho.mqtt.golang) 等优秀开源项目。
+感谢 [Wails](https://wails.io)、[FFmpeg](https://ffmpeg.org)、[Eclipse Paho](https://github.com/eclipse/paho.mqtt.golang)、[Vue](https://vuejs.org)、[Vite](https://vitejs.dev)、[Pinia](https://pinia.vuejs.org)、[Tailwind CSS](https://tailwindcss.com)、[Protobuf](https://protobuf.dev) 等优秀开源项目及其社区。正是这些项目让个人开发者也能构建出完整的桌面应用。
+
+**思路来源**
+
+感谢 RoboMaster 论坛社区中各参赛队分享的优质开源项目与技术文章，为本项目的架构设计提供了宝贵的参考与启发。
 
 **个人（老队员）**
 
