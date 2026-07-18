@@ -43,7 +43,7 @@
 
 - **双视频源常驻热切换**：官方 H.265 图传（UDP `:3334`）与自定义 H.264 链路（裁判系统 0x0310 图传）两路 ffplay 同时运行，主画面/画中画一键互换——切换只改窗口布局，**不重启解码进程**。自研 H.264 重组器把 0x0310 的 300B 无边界字节块恢复成完整访问单元，支持码流中途切入与断流自动重同步。
 
-- **裁判系统全量遥测 HUD**：MQTT（RMCP V1.2.0 protobuf）14 类主题解码桥接，驱动 16 个可自由拖拽布局的 HUD 组件（血量/比分/火控/经济/模块自检/增益/裁判事件…）；clientID 启动期自动探测，纠正「程序写死蓝方英雄、场上接的是红方」这类现场高频事故。
+- **裁判系统全量遥测 HUD**：MQTT（RMCP V1.2.0 protobuf）14 类主题解码桥接，驱动 16 个可自由拖拽布局的 HUD 组件（血量/比分/火控/经济/模块自检/增益/裁判事件…）。
 
 * * *
 
@@ -97,14 +97,10 @@ go version
 
 #### 2. 安装 Node.js
 
-前端 Vite 7 构建要求 **Node.js ≥ 20.19**。推荐使用 nvm：
+前端 Vite 7 构建要求 **Node.js ≥ 20.19**。
 
 ```bash
-curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.1/install.sh | bash
-source ~/.bashrc
-
-nvm install 22
-nvm use 22
+sudo apt install nodejs npm
 
 node --version
 npm --version
@@ -256,7 +252,7 @@ flowchart LR
 |---|---|---|
 | 0x0310 H.264 重组 | `pkg/video/h264_reassembler.go` | 300B 无边界字节块流恢复完整 AU：自带 Exp-Golomb 位读取器解析 `first_mb_in_slice` 判帧界（兼容 x264 sliced-threads），中途切入时缓存 SPS/PPS、等可恢复 IDR 才解锁 |
 | HEVC 同步门 | `pkg/video/hevc_sync_gate.go` | 只放行 VPS/SPS/PPS+IRAP 齐全的关键帧作解码起点，防止 ffplay 中途起播秒退；关键帧缓存为 bootstrap，播放器重建后回放 |
-| UDP 包头端序自举 | `pkg/network/udp_receiver.go` | 官方协议未定义 8 字节包头端序——双端序并行试解析自动锁定，失效自动切换；乱序容忍 + 去重 + 死帧超时 + 双重完整性校验 |
+
 | clientID 自动探测 | `pkg/network/mqtt_client.go` | 绕过 paho 手工构造最小 CONNECT/CONNACK 握手，逐个试探候选机器人 ID，广播 identifier rejected 时自动横向回退 |
 | X11 窗口层级 | `pkg/video/x11_window_layer.go` | 五级搜窗回退（PID+标题→标题→PID+class→PID+几何→class+几何，含递归 QueryTree 抓 XWayland 深层子窗）+ EWMH sibling 压层 + 几何回读校验 |
 | 帧新鲜度调度 | `pkg/video/native_player.go` | 2 帧队列保最新丢最旧 + 120ms 过期淘汰；写管道失败自动重启进程并联动重置同步门；后台 Wait 无僵尸回收 |
